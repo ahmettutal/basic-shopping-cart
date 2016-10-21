@@ -16,6 +16,4 @@ public interface CategoryService {
 	
 	void deleteCategory(String categoryId);
 
-	void deleteAll();
-
 }

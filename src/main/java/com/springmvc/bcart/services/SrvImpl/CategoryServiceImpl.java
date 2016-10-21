@@ -53,9 +53,4 @@ public class CategoryServiceImpl implements CategoryService {
 		mongoTemplate.remove(findCategoryQuery(categoryId), CATEGORY_COLLECTION_NAME);
 	}
 
-	@Override
-	public void deleteAll() {
-		mongoTemplate.remove(new Query(), CATEGORY_COLLECTION_NAME);
-	}
-
 }

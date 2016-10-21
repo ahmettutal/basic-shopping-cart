@@ -41,6 +41,15 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public List<Product> findProductsWithCategoryId(String categoryId) {
+        return mongoTemplate.find(findProductsWithCategoryIdQuery(categoryId), Product.class, PRODUCT_COLLECTION_NAME);
+    }
+
+    private Query findProductsWithCategoryIdQuery(String categoryId) {
+        return new Query(Criteria.where("categoryId").is(categoryId));
+    }
+
+    @Override
     public void updateProduct(String productId, String updateKey, Object updateValue) {
         Update update = new Update();
         update.set(updateKey, updateValue);

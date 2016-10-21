@@ -31,16 +31,34 @@ public class ProductController {
         ModelAndView modelAndView = new ModelAndView("home");
         modelAndView.addObject("categories", categories);
         modelAndView.addObject("products", products);
+        modelAndView.addObject("currentCategoryId", "");
 
         return modelAndView;
     }
 
-    @RequestMapping(value = "/create-category", method = RequestMethod.GET)
-    public ModelAndView getProductsWithCategoryId() {
+    @RequestMapping(value = "/category/{categoryId}", method = RequestMethod.GET)
+    public ModelAndView getProductsWithCategoryId(@PathVariable("categoryId") String categoryId) {
 
         List<Category> categories = categoryService.getCategories();
+        List<Product> products = productService.findProductsWithCategoryId(categoryId);
 
-        return new ModelAndView("home", "categories", categories);
+        ModelAndView modelAndView = new ModelAndView("home");
+        modelAndView.addObject("categories", categories);
+        modelAndView.addObject("products", products);
+        modelAndView.addObject("currentCategoryId", categoryId);
+
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/product/{productId}", method = RequestMethod.GET)
+    public ModelAndView getProduct(@PathVariable("productId") String productId) {
+
+        Product product = productService.getProduct(productId);
+
+        ModelAndView modelAndView = new ModelAndView("productdetail");
+        modelAndView.addObject("product", product);
+
+        return modelAndView;
     }
 
     @RequestMapping(value = "/create-category", method = RequestMethod.POST)
