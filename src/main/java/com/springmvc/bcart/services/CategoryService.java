@@ -15,4 +15,7 @@ public interface CategoryService {
 	void updateCategory(String categoryId, String updateKey, Object updateValue);
 	
 	void deleteCategory(String categoryId);
+
+	void deleteAll();
+
 }

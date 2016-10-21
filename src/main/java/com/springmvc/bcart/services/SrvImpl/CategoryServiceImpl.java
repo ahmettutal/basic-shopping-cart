@@ -52,4 +52,10 @@ public class CategoryServiceImpl implements CategoryService {
 	public void deleteCategory(String categoryId) {
 		mongoTemplate.remove(findCategoryQuery(categoryId), CATEGORY_COLLECTION_NAME);
 	}
+
+	@Override
+	public void deleteAll() {
+		mongoTemplate.remove(new Query(), CATEGORY_COLLECTION_NAME);
+	}
+
 }
