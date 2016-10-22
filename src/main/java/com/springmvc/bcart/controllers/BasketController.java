@@ -2,8 +2,8 @@ package com.springmvc.bcart.controllers;
 
 import com.springmvc.bcart.model.Basket;
 import com.springmvc.bcart.model.Product;
-import com.springmvc.bcart.services.BasketService;
-import com.springmvc.bcart.services.ProductService;
+import com.springmvc.bcart.services.Strategy;
+import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,21 +20,22 @@ import java.util.Map;
 @Controller
 public class BasketController {
 
-    @Autowired
-    ProductService productService;
+    @Autowired(required = true)
+    BeanFactory beanFactory;
 
-    @Autowired
-    BasketService basketService;
 
     @RequestMapping(value = "/basket", method = RequestMethod.GET)
     public ModelAndView getBaskets() {
 
+        Strategy basketStrategy = beanFactory.getBean("basket", Strategy.class);
+        Strategy productStrategy = beanFactory.getBean("product", Strategy.class);
         Map<String, Double> basketMap = new HashMap<String, Double>();
-        List<Product> products = new ArrayList<Product>();
-        List<Basket> baskets = basketService.getBaskets();
+        List<Object> products = new ArrayList<Object>();
+        List<Object> baskets = basketStrategy.findAll();
 
-        for (Basket basket : baskets) {
-            products.add(productService.getProduct(basket.getProductId()));
+        for (Object object : baskets) {
+            Basket basket = (Basket) object;
+            products.add(productStrategy.findById(basket.getProductId()));
             basketMap.put(basket.getProductId(), basket.getCount());
         }
 
@@ -48,15 +49,11 @@ public class BasketController {
     @ResponseBody
     @RequestMapping(value = "/basket", method = RequestMethod.POST)
     public String addToBasket(@RequestParam("productId") String productId,
-                            @RequestParam("count") Double count) throws Exception {
+                              @RequestParam("count") Double count) throws Exception {
 
-        Product product = productService.getProduct(productId);
-
-        if (product == null)
-            return "Product Not Found !";
-
-        basketService.deleteBasket(productId); // Delete Old Records for This ProductID
-        basketService.save(product.getProductId(), count); // Then insert a new Basket Item
+        Strategy basketStrategy = beanFactory.getBean("basket", Strategy.class);
+        basketStrategy.deleteByID(productId); // Delete Old Records for This ProductID
+        basketStrategy.save(new Basket(productId, count)); // Then insert a new Basket Item
 
         return "OK";
     }

@@ -23,7 +23,7 @@
 				</div>
 
 				<div class="image">
-					<img src="../../resources/static/images/${item.categoryId}.jpg" width="120" />
+					<img src="../../resources/static/images/${item.categoryId}.jpg" width="100" height="100" />
 				</div>
 
 				<div class="description">
@@ -34,7 +34,7 @@
 
 				<div class="quantity">
 					<button class="plus-btn" type="button" name="button">
-						<img src="../../resources/static/images/plus.svg" alt="" />
+						<img src="../../resources/static/images/plus.svg" />
 					</button>
 					<input type="text" name="count" id="count" value="${basketMap.get(item.productId).intValue()}">
 					<button class="minus-btn" type="button" name="button">

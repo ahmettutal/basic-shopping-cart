@@ -7,6 +7,8 @@
 	<link rel="stylesheet" href="../resources/static/css/style.css" type="text/css" media="all" />
 </head>
 <body>
+<br/>
+<br/>
 
 <!-- Shell -->
 <div class="shell">

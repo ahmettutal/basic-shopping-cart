@@ -46,6 +46,8 @@
 
 </head>
 <body>
+<br/>
+<br/>
 
 <!-- Shell -->
 <div class="shell">
@@ -81,6 +83,7 @@ Colour:${product.colour}</textarea>
 				</ul>
 				<span style="float: right; padding-right: 40px;"><h1><a href="/basket">Go To CHECKOUT <img src="../resources/static/images/basket.png" width="39" /></a></h1></span>
 				<div class="cl">&nbsp;</div>
+				<br/><br/>
 			</div>
 			<!-- End Products -->
 

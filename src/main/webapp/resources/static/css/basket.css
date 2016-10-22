@@ -10,7 +10,7 @@ body {
   height: 100%;
   padding: 10px;
   margin: 0;
-  background-color: #a2c8a2;
+  background-color: #b1c8be;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -74,7 +74,7 @@ body {
 
 .item {
   padding: 20px 30px;
-  height: 120px;
+  height: 140px;
   display: flex;
 }
 
@@ -88,28 +88,6 @@ body {
   position: relative;
   padding-top: 30px;
   margin-right: 60px;
-}
-
-.delete-btn {
-  display: inline-block;
-  cursor: pointer;
-  width: 18px;
-  height: 17px;
-  background: url("delete-icn.svg") no-repeat center;
-  margin-right: 20px;
-}
-
-.like-btn {
-  position: absolute;
-  top: 9px;
-  left: 15px;
-  display: inline-block;
-  background: url('twitter-heart.png');
-  width: 60px;
-  height: 60px;
-  background-size: 2900%;
-  background-repeat: no-repeat;
-  cursor: pointer;
 }
 
 .is-active {

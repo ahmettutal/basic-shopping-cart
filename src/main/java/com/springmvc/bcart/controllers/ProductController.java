@@ -4,8 +4,8 @@ import com.mongodb.*;
 import com.mongodb.util.JSON;
 import com.springmvc.bcart.model.Category;
 import com.springmvc.bcart.model.Product;
-import com.springmvc.bcart.services.CategoryService;
-import com.springmvc.bcart.services.ProductService;
+import com.springmvc.bcart.services.Strategy;
+import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,17 +21,17 @@ import java.util.List;
 @RequestMapping(value = "/")
 public class ProductController {
 
-    @Autowired
-    CategoryService categoryService;
+    @Autowired(required = true)
+    BeanFactory beanFactory;
 
-    @Autowired
-    ProductService productService;
 
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView main() {
 
-        List<Category> categories = categoryService.getCategories();
-        List<Product> products = productService.getProducts();
+        Strategy categoryStrategy = beanFactory.getBean("category", Strategy.class);
+        Strategy productStrategy = beanFactory.getBean("product", Strategy.class);
+        List<Category> categories =(List<Category>)(List<?>)  categoryStrategy.findAll();
+        List<Product> products =(List<Product>)(List<?>) productStrategy.findAll();
 
         ModelAndView modelAndView = new ModelAndView("home");
         modelAndView.addObject("categories", categories);
@@ -44,8 +44,10 @@ public class ProductController {
     @RequestMapping(value = "/category/{categoryId}", method = RequestMethod.GET)
     public ModelAndView getProductsWithCategoryId(@PathVariable("categoryId") String categoryId) {
 
-        List<Category> categories = categoryService.getCategories();
-        List<Product> products = productService.findProductsWithCategoryId(categoryId);
+        Strategy categoryStrategy = beanFactory.getBean("category", Strategy.class);
+        Strategy productStrategy = beanFactory.getBean("product", Strategy.class);
+        List<Category> categories = (List<Category>)(List<?>) categoryStrategy.findAll();
+        List<Product> products =(List<Product>)(List<?>) productStrategy.findListById(categoryId);
 
         ModelAndView modelAndView = new ModelAndView("home");
         modelAndView.addObject("categories", categories);
@@ -58,7 +60,8 @@ public class ProductController {
     @RequestMapping(value = "/product/{productId}", method = RequestMethod.GET)
     public ModelAndView getProduct(@PathVariable("productId") String productId) {
 
-        Product product = productService.getProduct(productId);
+        Strategy productStrategy = beanFactory.getBean("product", Strategy.class);
+        Object product =  productStrategy.findById(productId);
 
         ModelAndView modelAndView = new ModelAndView("productdetail");
         modelAndView.addObject("product", product);

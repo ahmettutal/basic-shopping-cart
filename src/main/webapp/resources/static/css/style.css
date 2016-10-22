@@ -1,6 +1,6 @@
 * { padding:0; margin:0; outline:0; }
 body {
-    background: #fff url(../images/body.gif) repeat-x 0 0;
+    background-color: #b1c8be;
     font-family: "Trebuchet MS", Arial, sans-serif;
     font-size:12px;
     line-height:16px;
@@ -28,9 +28,7 @@ h2 { font-size:14px; line-height:16px; }
 h3 { font-size:12px; line-height:14px; text-transform: uppercase; color:#000; }
 h4 { font-size:12px; line-height:14px; text-transform: uppercase; color:#000; }
 
-.shell { width:960px; margin:0 auto; padding:10px; background:#fff; }
-
-#header { height:64px; background:url(../images/header.gif); position:relative;}
+.shell { width:960px; margin:0 auto; padding:10px; background:#fff; border-radius: 6px;}
 
 #navigation { float:right; white-space:nowrap; }
 #navigation ul{ list-style-type: none; height:64px; font-weight: bold; float:left;}
@@ -52,8 +50,6 @@ a.cart-link:hover { text-decoration: underline;}
 .box h2{ background:#7f7f7f; color:#fff; font-weight: normal; padding:0 5px; position:relative; height:27px; line-height:27px; }
 .box h2 span{ position:absolute; width:10px; height:5px; background:url(../images/h2-arr.gif); top:27px; right:10px; font-size:0; line-height:0;}
 .box-content { padding:5px;}
-
-a.bul { background:url(../images/bul.gif) no-repeat 0 center; padding-left:10px;}
 
 .categories { min-height:303px; }
 .categories ul { list-style-type: none; font-size:13px;}
