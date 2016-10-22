@@ -48,7 +48,7 @@
 						<c:forEach var="item" items="${products}" varStatus="loop">
 							<li>
 								<a href="/product/${item.productId}">
-									<img src="../resources/static/images/${item.categoryId}.jpg" alt="" />
+									<img src="../resources/static/images/${item.categoryId}.jpg" width="230" height="300" />
 									<div class="product-info">
 										<h3>${item.name} - ${item.price} TL</h3>
 									</div>

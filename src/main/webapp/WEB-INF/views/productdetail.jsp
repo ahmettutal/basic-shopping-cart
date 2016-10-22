@@ -65,7 +65,7 @@
 
 				<ul>
 					<li>
-						<img src="../resources/static/images/jackets1.jpg" width="390" height="490" alt="" />
+						<img src="../resources/static/images/${product.categoryId}.jpg" width="390" />
 					</li>
 					<li>
 						<br><h1>${product.name}</h1><br>${product.price} TL

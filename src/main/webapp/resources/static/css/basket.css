@@ -42,7 +42,7 @@ body {
 }
 
 .shopping-cart {
-  width: 93%;
+  width: 850px;
   height: auto;
   margin: 3px auto;
   background: #FFFFFF;
@@ -54,7 +54,7 @@ body {
 }
 
 .last-line {
-  width: 93%;
+  width: 850px;
   height: auto;
   margin: 0px auto;
   background: #FFFFFF;
@@ -199,7 +199,7 @@ input:focus {
 }
 
 /* Responsive */
-@media (max-width: 800px) {
+@media (max-width: 900px) {
   .shopping-cart {
     width: 100%;
     height: auto;

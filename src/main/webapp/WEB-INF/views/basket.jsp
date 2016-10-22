@@ -23,7 +23,7 @@
 				</div>
 
 				<div class="image">
-					<img src="../../resources/static/images/item-1.png" alt="" />
+					<img src="../../resources/static/images/${item.categoryId}.jpg" width="120" />
 				</div>
 
 				<div class="description">
