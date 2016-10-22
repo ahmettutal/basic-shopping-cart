@@ -1,5 +1,6 @@
 package com.springmvc.bcart.controllers;
 
+import com.springmvc.bcart.model.Basket;
 import com.springmvc.bcart.model.Product;
 import com.springmvc.bcart.services.BasketService;
 import com.springmvc.bcart.services.ProductService;
@@ -10,6 +11,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 public class BasketController {
@@ -22,7 +28,21 @@ public class BasketController {
 
     @RequestMapping(value = "/basket", method = RequestMethod.GET)
     public ModelAndView getBaskets() {
-        return new ModelAndView("basket", "baskets", basketService.getBaskets());
+
+        Map<String, Double> basketMap = new HashMap<String, Double>();
+        List<Product> products = new ArrayList<Product>();
+        List<Basket> baskets = basketService.getBaskets();
+
+        for (Basket basket : baskets) {
+            products.add(productService.getProduct(basket.getProductId()));
+            basketMap.put(basket.getProductId(), basket.getCount());
+        }
+
+        ModelAndView modelAndView = new ModelAndView("basket");
+        modelAndView.addObject("products", products);
+        modelAndView.addObject("basketMap", basketMap);
+
+        return modelAndView;
     }
 
     @ResponseBody
@@ -35,7 +55,8 @@ public class BasketController {
         if (product == null)
             return "Product Not Found !";
 
-        basketService.save(product.getProductId(), count);
+        basketService.deleteBasket(productId); // Delete Old Records for This ProductID
+        basketService.save(product.getProductId(), count); // Then insert a new Basket Item
 
         return "OK";
     }

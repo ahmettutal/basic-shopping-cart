@@ -4,6 +4,8 @@ import com.springmvc.bcart.model.Basket;
 import com.springmvc.bcart.services.BasketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,6 +28,15 @@ public class BasketServiceImpl implements BasketService {
         Basket basket = new Basket(productId, count);
         mongoTemplate.save(basket, BASKET_COLLECTION_NAME);
         return basket;
+    }
+
+    @Override
+    public void deleteBasket(String productId) {
+        mongoTemplate.remove(findBasketQuery(productId), BASKET_COLLECTION_NAME);
+    }
+
+    private Query findBasketQuery(String productId) {
+        return new Query(Criteria.where("productId").is(productId));
     }
 
 }

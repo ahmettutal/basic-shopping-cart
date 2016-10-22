@@ -10,4 +10,5 @@ public interface BasketService {
 
     Basket save(String productId, Double count);
 
+    void deleteBasket(String productId);
 }

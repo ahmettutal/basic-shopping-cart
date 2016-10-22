@@ -69,7 +69,8 @@
 					</li>
 					<li>
 						<br><h1>${product.name}</h1><br>${product.price} TL
-						<br><br><br><br><br><br>Quantity:&nbsp;<input class="quantity" id="quantity" value="1"/>&nbsp;&nbsp;<input type="button" id="basket" class="add-to-basket" value="Add to Basket" />
+						<br><br><br><br><br><br>Quantity:&nbsp;<input class="quantity" id="quantity" value="1"/>&nbsp;&nbsp;
+						<input type="button" id="basket" class="add-to-basket" value="Add to Basket" />
 						<br><br>
 						<textarea class="detail-area">Product Details:${product.detail}
 
@@ -78,6 +79,7 @@ Size:${product.size}
 Colour:${product.colour}</textarea>
 					</li>
 				</ul>
+				<span style="float: right; padding-right: 40px;"><h1><a href="/basket">Go To CHECKOUT <img src="../resources/static/images/basket.png" width="39" /></a></h1></span>
 				<div class="cl">&nbsp;</div>
 			</div>
 			<!-- End Products -->
