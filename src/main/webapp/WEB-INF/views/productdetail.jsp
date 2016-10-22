@@ -4,7 +4,7 @@
 <head>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 	<title>Basic Shopping Cart</title>
-	<link rel="stylesheet" href="../resources/static/css/style.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="../../resources/static/css/product.css" type="text/css" media="all" />
 </head>
 <body>
 
@@ -14,52 +14,25 @@
 	<!-- Main -->
 	<div id="main">
 		<div class="cl">&nbsp;</div>
-
-		<!-- Sidebar -->
-		<div id="sidebar">
-
-			<!-- Categories -->
-			<div class="box categories">
-				<h2>Top Categories</h2>
-				<div class="box-content">
-					<ul>
-						<c:if test="${not empty categories}">
-							<c:forEach var="item" items="${categories}">
-								<li><a href="/category/${item.categoryId}">${item.name}</a></li>
-							</c:forEach>
-						</c:if>
-					</ul>
-				</div>
-			</div>
-			<!-- End Categories -->
-
-		</div>
-		<!-- End Sidebar -->
-
+		<center><h1>Basic Shopping Cart</h1></center><br>
 		<!-- Content -->
 		<div id="content">
 
 			<!-- Products -->
-			<div class="products">
+			<div class="product">
 				<div class="cl">&nbsp;</div>
 				<ul>
-					<c:if test="${not empty products}">
-						<c:forEach var="item" items="${products}" varStatus="loop">
-							<li>
-								<a href="#">
-									<img src="../resources/static/images/big1.jpg" alt="" />
-									<div class="product-info">
-										<h3>${item.name}</h3>
-									</div>
-								</a>
-							</li>
-
-							<c:if test="${(loop.count mod 3) == 0}">
-				</ul><ul>
-							</c:if>
-
-						</c:forEach>
-					</c:if>
+					<li>
+						<img src="../../resources/static/images/jackets1.jpg" width="390" height="490" alt="" />
+					</li>
+					<li>
+						<br><h1>${product.name}</h1><br>${product.price} TL
+						<br><br><br><br><br><br>Quantity:&nbsp;<input class="quantity"/>&nbsp;&nbsp;<input type="button" class="add-to-basket" value="Add to Basket" />
+						<br><br>
+						<textarea class="detail-area">Product Details:${product.details}
+Size:${product.size}
+Colour:${product.colour}</textarea>
+					</li>
 				</ul>
 				<div class="cl">&nbsp;</div>
 			</div>

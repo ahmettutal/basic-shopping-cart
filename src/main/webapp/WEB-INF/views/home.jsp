@@ -14,7 +14,7 @@
 	<!-- Main -->
 	<div id="main">
 		<div class="cl">&nbsp;</div>
-
+		<center><h1>Basic Shopping Cart</h1></center>
 		<!-- Sidebar -->
 		<div id="sidebar">
 
@@ -46,10 +46,10 @@
 					<c:if test="${not empty products}">
 						<c:forEach var="item" items="${products}" varStatus="loop">
 							<li>
-								<a href="#">
-									<img src="../resources/static/images/big1.jpg" alt="" />
+								<a href="/product/${item.productId}">
+									<img src="../resources/static/images/${item.categoryId}.jpg" alt="" />
 									<div class="product-info">
-										<h3>${item.name}</h3>
+										<h3>${item.name} - ${item.price} TL</h3>
 									</div>
 								</a>
 							</li>
