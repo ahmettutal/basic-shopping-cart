@@ -14,7 +14,8 @@
 	<!-- Main -->
 	<div id="main">
 		<div class="cl">&nbsp;</div>
-		<center><h1>Basic Shopping Cart</h1></center>
+		<a href="/"><h1>Basic Shopping Cart</h1></a>
+		<br>
 		<!-- Sidebar -->
 		<div id="sidebar">
 

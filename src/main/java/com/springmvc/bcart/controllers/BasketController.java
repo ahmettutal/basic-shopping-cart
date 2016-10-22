@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -24,16 +25,19 @@ public class BasketController {
         return new ModelAndView("basket", "baskets", basketService.getBaskets());
     }
 
+    @ResponseBody
     @RequestMapping(value = "/basket", method = RequestMethod.POST)
-    public void addToBasket(@RequestParam("productId") String productId,
+    public String addToBasket(@RequestParam("productId") String productId,
                             @RequestParam("count") Double count) throws Exception {
 
         Product product = productService.getProduct(productId);
 
         if (product == null)
-            throw new Exception("Product Not Found !");
+            return "Product Not Found !";
 
         basketService.save(product.getProductId(), count);
+
+        return "OK";
     }
 
 }

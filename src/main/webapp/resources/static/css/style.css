@@ -12,7 +12,7 @@ input, textarea, select { font-family: "Trebuchet MS", Arial, sans-serif; font-s
 
 a img { border:0; }
 
-a { color:#8b0000; text-decoration: underline; cursor:pointer; }
+a { color:#8b0000; cursor:pointer; }
 a:hover { color:#666; text-decoration: none; }
 
 .left, .alignleft { float:left; display:inline; }

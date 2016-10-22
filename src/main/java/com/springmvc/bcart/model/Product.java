@@ -11,12 +11,18 @@ public class Product {
     private String productId;
     private String name;
     private Double price;
+    private String detail;
+    private String size;
+    private String colour;
     private String categoryId;
 
-    public Product(String productId, String name, Double price, String categoryId) {
+    public Product(String productId, String name, Double price, String detail, String size, String colour, String categoryId) {
         this.productId = productId;
         this.name = name;
         this.price = price;
+        this.detail = detail;
+        this.size = size;
+        this.colour = colour;
         this.categoryId = categoryId;
     }
 
@@ -50,6 +56,30 @@ public class Product {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public String getDetail() {
+        return detail;
+    }
+
+    public void setDetail(String detail) {
+        this.detail = detail;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
+    public String getColour() {
+        return colour;
+    }
+
+    public void setColour(String colour) {
+        this.colour = colour;
     }
 
     public String getCategoryId() {

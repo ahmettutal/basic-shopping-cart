@@ -25,8 +25,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product save(String productId, String name, Double price, String categoryId) {
-        Product product = new Product(productId, name, price, categoryId);
+    public Product save(String productId, String name, Double price, String detail, String size, String colour, String categoryId) {
+        Product product = new Product(productId, name, price, detail, size, colour, categoryId);
         mongoTemplate.save(product, PRODUCT_COLLECTION_NAME);
         return product;
     }
@@ -47,18 +47,6 @@ public class ProductServiceImpl implements ProductService {
 
     private Query findProductsWithCategoryIdQuery(String categoryId) {
         return new Query(Criteria.where("categoryId").is(categoryId));
-    }
-
-    @Override
-    public void updateProduct(String productId, String updateKey, Object updateValue) {
-        Update update = new Update();
-        update.set(updateKey, updateValue);
-        mongoTemplate.updateFirst(findProductQuery(productId), update, PRODUCT_COLLECTION_NAME);
-    }
-
-    @Override
-    public void deleteProduct(String productId) {
-        mongoTemplate.remove(findProductQuery(productId), PRODUCT_COLLECTION_NAME);
     }
 
 }
